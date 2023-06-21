@@ -146,7 +146,6 @@
                     $output["inst_apem"] = $row["inst_apem"];
                     $data[]=$output;
                 }
-                
                 echo json_encode($data);
             
             break;
@@ -290,7 +289,7 @@
             $data= Array();
             foreach($datos as $row){
                 $sub_array = array();
-                $sub_array[] = $row["cur_nom"];
+                $sub_array[] = limitar_cadena($row["cur_nom"], 35, "...");
                 $sub_array[] = $row["usu_nomapm"];
                 $sub_array[] = $row["cur_fechini"];
                 $sub_array[] = $row["cur_fechfin"];

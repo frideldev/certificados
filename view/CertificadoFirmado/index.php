@@ -24,6 +24,10 @@
             <button class="btn btn-outline-info" id="btnpng"><i class="fa fa-send mg-r-10"></i> PNG</button>
             <button class="btn btn-outline-success" id="btnpdf"><i class="fa fa-send mg-r-10"></i> PDF</button>
         </div>
+        <br>
+        <p class="tx-16 mg-b-30 text-justify" id="descripcion_final">
+         
+        </p>
 
       </div>
     </div>

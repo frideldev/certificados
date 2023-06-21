@@ -86,33 +86,30 @@ function registrardetalle(){
     
     table = $('#cursos_data').DataTable();
     var cur_id =[];
-    var cantidad=[];
-    var folio=[];
+    var pago=[];
     var usu_dni = $("#usu_dni").val();
-    var curd_comprobante = document.getElementById('curd_comprobante').files[0];;
-    console.log(curd_comprobante);
-    var i=0;
+    var curd_comprobante = document.getElementById('curd_comprobante').files[0]; 
+    var curd_comprobante_dato = document.getElementById('curd_comprobante');
     table.rows().every(function(rowIdx, tableLoop, rowLoop) {
         cell1 = table.cell({ row: rowIdx, column: 0 }).node();
+        cell2 = table.cell({ row: rowIdx, column: 4 }).data();
         if ($('input', cell1).prop("checked") == true) {
             id = $('input', cell1).val();
-            $.post("../../controller/usuario.php?op=totalcursosusuario", { cur_id : id }, function (datacurtotal) {
-                data = JSON.parse(datacurtotal);
-                cantidad.push([data.total]);
-            });
-            $.post("../../controller/curso.php?op=mostrarcategoria", { cur_id : id }, function (data) {
-                data = JSON.parse(data);
-                folio.push(['C-'+data.cat_codigo+'-'+(cantidad+i)]);
-            });
             cur_id.push([id]);
-            i=i+1;
+            pago.push([cell2]);
         }
+        
     });
-
-    if (cur_id == 0){
+    var validadorpago=1;
+    pago.forEach(element => {
+      if(element=="PAGO" && curd_comprobante_dato.files.length==0){
+        validadorpago=0;
+      }
+    });
+    if (validadorpago==0 || cur_id==0 ){
         Swal.fire({
             title: 'Error!',
-            text: 'Seleccionar Cursos',
+            text: 'Seleccionar los cursos o el deposito bancario',
             icon: 'error',
             confirmButtonText: 'Aceptar'
         })

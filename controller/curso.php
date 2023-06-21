@@ -73,7 +73,7 @@
             foreach($datos as $row){
                 $sub_array = array();
                 $sub_array[] = $row["cat_nom"];
-                $sub_array[] = '<a href="'.$row["cur_img"].'" target="_blank">'.strtoupper($row["cur_nom"]).'</a>';
+                $sub_array[] = '<a href="'.$row["cur_img"].'" target="_blank">'.strtoupper(limitar_cadena($row["cur_nom"], 35, "...")).'</a>';
                 $sub_array[] = $row["cur_fechini"];
                 $sub_array[] = $row["cur_fechfin"];
                 $sub_array[] = $row["vigencia"];
@@ -98,7 +98,7 @@
             foreach($datos as $row){
                 $sub_array = array();
                 $sub_array[] = $row["cat_nom"];
-                $sub_array[] = '<a href="'.$row["cur_img"].'" target="_blank">'.strtoupper($row["cur_nom"]).'</a>';
+                $sub_array[] = '<a href="'.$row["cur_img"].'" target="_blank">'.strtoupper(limitar_cadena($row["cur_nom"], 35, "...")).'</a>';
                 $sub_array[] = $row["cur_fechini"];
                 $sub_array[] = $row["cur_fechfin"];
                 $sub_array[] = $row["vigencia"];

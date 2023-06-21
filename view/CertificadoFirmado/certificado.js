@@ -37,9 +37,10 @@ $(document).ready(function(){
     var curd_id = getUrlParameter('curd_id');
 
     $.post("../../controller/usuario.php?op=mostrar_curso_detalle", { curd_id : curd_id }, function (data) {
+       
         data = JSON.parse(data);
-        console.log(data.usu_nomapm);
-
+        var parrafo = document.getElementById("descripcion_final");
+        parrafo.innerText = "El siguiente certificado que corresponde a: " + data.usu_nomapm.toUpperCase() + ", con código de certificado: " + data.curd_folio+ ", La academia Líder acredita para fines convenientes al interesado";
         /* Ruta de la Imagen */
         image.src = data.cur_img_fir;
         /* Dimensionamos y seleccionamos imagen */
@@ -62,8 +63,8 @@ $(document).ready(function(){
             ctx.textAlign = "center";
             ctx.textBaseline = 'middle';
             var x = (canvas.width-10) / 2;
-            y=275;
-            ctx.fillText(data.usu_nomapm, x, y);
+            y=245;
+            ctx.fillText(data.usu_nomapm.toUpperCase(), x, y);
             ctx.font = 'normal 16px Arial';
             ctx.textAlign = "center";
             ctx.textBaseline = 'middle';
@@ -113,7 +114,7 @@ $(document).ready(function(){
             imageqr.src = "../../public/qr/"+curd_id+".png";
             /* Dimensionamos y seleccionamos imagen */
             imageqr.onload = function() {
-                ctx.drawImage(imageqr, 45, 503, 100, 100);
+                ctx.drawImage(imageqr, 15, 500, 100, 100);
             }
             
 
@@ -133,7 +134,7 @@ $(document).on("click","#btnpng", function(){
 $(document).on("click","#btnpdf", function(){
     var imgData = canvas.toDataURL('image/png');
     var doc = new jsPDF('l', 'mm');
-    doc.addImage(imgData, 'PNG', 30, 15);
+    doc.addImage(imgData, 'PNG', -3, -5,302,220);
     doc.save('Certificado.pdf');
 });
 

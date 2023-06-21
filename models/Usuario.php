@@ -353,7 +353,7 @@
                    $usu_img=$usu_img;
                 }
                 else{
-                    $usu_img="../public/img/1.png";
+                    $usu_img="../../public/img/usuarios/blank.png";
                 }
                 
             }
