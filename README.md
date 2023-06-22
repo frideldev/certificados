@@ -6,3 +6,4 @@
 - Se mejoro la ubicacion del certificado a nivel de impresion con el pdf para certificado como para el firmado.
 - Se mejoro a nivel de tablas donde se limito la cantidad de caracteres que se visualiza especialmente con el nombre del curso.
 - El formulario de registro ya cuenta con validacion en el caso que escojan algun curso de pago, les obliga a enviar el deposito bancario.
+- Se corrigio la impresion de varios certificados y pueda exportarlo en PDF, donde se rediseño la pagina de inicio de impresion de certificados.
