@@ -348,7 +348,7 @@
             break;
 
         case "guardar_desde_excel":
-            $usuario->insert_usuario($_POST["usu_nomapm"],$_POST["usu_correo"],$_POST["usu_pass"],$_POST["usu_grado"],$_POST["usu_ciudad"],$_POST["usu_telf"],$_POST["usu_img"],$_POST["rol_id"],$_POST["usu_dni"]);
+            $usuario->insert_usuario_curso_usuario($_POST["usu_nomapm"],$_POST["usu_correo"],$_POST["usu_pass"],$_POST["usu_grado"],$_POST["usu_ciudad"],$_POST["usu_telf"],$_POST["usu_img"],$_POST["rol_id"],$_POST["usu_dni"],$_POST["cur_id"]);
             break;
         case "update_imagen_usuario":
             $usuario->update_imagen_usuario($_POST["usux_idx"],$_POST["usu_img"]);

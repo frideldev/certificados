@@ -1,4 +1,5 @@
 <?php
+require_once("Curso.php");
     class Usuario extends Conectar{
         /*TODO: Funcion para login de acceso del usuario */
         public function login(){
@@ -369,6 +370,44 @@
             $sql->bindValue(8, $rol_id);
             $sql->bindValue(9, $usu_dni);
             $sql->execute();
+            return $resultado=$sql->fetchAll();
+        }
+         /*TODO: Funcion para insertar usuario */
+         public function insert_usuario_curso_usuario($usu_nomapm,$usu_correo,$usu_pass,$usu_grado,$usu_ciudad,$usu_telf,$usu_img,$rol_id,$usu_dni,$cur_id){
+            $curso = new Curso();
+            $conectar= parent::conexion();
+            parent::set_names();
+            $usux = new Usuario();
+            if ($_FILES["usu_img"]["name"]!=''){
+                $usu_img = $usux->upload_file();
+            }
+            else{
+                if($usu_img!=''){
+                   $usu_img=$usu_img;
+                }
+                else{
+                    $usu_img="../../public/img/usuarios/blank.png";
+                }
+                
+            }
+            $sql="INSERT IGNORE INTO tm_usuario (usu_id,usu_nomapm,usu_correo,usu_pass,usu_grado,usu_ciudad,usu_telf,usu_img,rol_id,usu_dni,fech_crea, est) VALUES (NULL,?,?,?,?,?,?,?,?,?,now(),'1') ON DUPLICATE KEY UPDATE usu_id=LAST_INSERT_ID(usu_id);";
+            $sql=$conectar->prepare($sql);
+            $sql->bindValue(1, $usu_nomapm);
+            $sql->bindValue(2, $usu_correo);
+            $sql->bindValue(3, $usu_pass);
+            $sql->bindValue(4, $usu_grado);
+            $sql->bindValue(5, $usu_ciudad);
+            $sql->bindValue(6, $usu_telf);
+            $sql->bindValue(7, $usu_img);
+            $sql->bindValue(8, $rol_id);
+            $sql->bindValue(9, $usu_dni);
+            $sql->execute();
+            $sql1 = "SELECT usu_id FROM tm_usuario ORDER BY usu_id DESC LIMIT 1";
+            $sql1 = $conectar->prepare($sql1);
+            $sql1->execute();
+            $usu_id = $sql1->fetchColumn();
+            print_r($usu_id);
+            $curso->insert_curso_usuario($cur_id,$usu_id,'');
             return $resultado=$sql->fetchAll();
         }
 

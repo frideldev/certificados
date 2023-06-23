@@ -176,7 +176,8 @@ var ExcelToJSON = function() {
                         usu_telf :columns[5],
                         usu_img :columns[6],
                         rol_id : columns[7],
-                        usu_dni :columns[8]
+                        usu_dni :columns[8],
+                        cur_id:columns[9]
                     }, function (data) {
                         console.log(data);
                     });

@@ -95,7 +95,7 @@
   <!-- Copyright -->
   <div class="text-center text-white p-3" >
     © 2023 Copyright:
-    <a class="text-white" href="http://fridel.info.bo/">Diseñado y Desarrollado por Fridel Baldiviezo</a> - Derechos Reservados Academia Lider - Version 1.0.2-Beta
+    <a class="text-white" href="http://fridel.info.bo/">Diseñado y Desarrollado por Fridel Baldiviezo</a> - Derechos Reservados Academia Lider - Version 1.0.3-Beta
   </div>
   <!-- Copyright -->
 </footer>
